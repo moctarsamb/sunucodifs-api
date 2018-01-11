@@ -1,0 +1,50 @@
+{
+  "name": "chambre",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "numero": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "nbpositions": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    },
+    "reserve": {
+      "type": "boolean",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "etage": {
+      "type": "hasOne",
+      "model": "etage",
+      "foreignKey": ""
+    },
+    "batiment": {
+      "type": "hasOne",
+      "model": "batiment",
+      "foreignKey": ""
+    },
+    "couloir": {
+      "type": "hasOne",
+      "model": "couloir",
+      "foreignKey": ""
+    },
+    "codification": {
+      "type": "hasMany",
+      "model": "codification",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

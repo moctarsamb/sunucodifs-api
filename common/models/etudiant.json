@@ -1,0 +1,50 @@
+{
+  "name": "etudiant",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "prenom": {
+      "type": "string",
+      "required": true
+    },
+    "nom": {
+      "type": "string",
+      "required": true
+    },
+    "sexe": {
+      "type": "string",
+      "required": true
+    },
+    "numCIN": {
+      "type": "string",
+      "required": true
+    },
+    "numCE": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "codification": {
+      "type": "hasMany",
+      "model": "codification",
+      "foreignKey": ""
+    },
+    "departement": {
+      "type": "belongsTo",
+      "model": "departement",
+      "foreignKey": ""
+    },
+    "niveau": {
+      "type": "belongsTo",
+      "model": "niveau",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

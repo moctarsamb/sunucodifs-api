@@ -1,0 +1,28 @@
+{
+  "name": "departement",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nom": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "batiment": {
+      "type": "hasMany",
+      "model": "batiment",
+      "foreignKey": ""
+    },
+    "etudiant": {
+      "type": "hasMany",
+      "model": "etudiant",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

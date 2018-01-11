@@ -1,0 +1,37 @@
+{
+  "name": "etage",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "numEtage": {
+      "type": "number",
+      "required": true
+    },
+    "nbCouloirs": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "couloir": {
+      "type": "hasMany",
+      "model": "couloir",
+      "foreignKey": ""
+    },
+    "chambre": {
+      "type": "hasMany",
+      "model": "chambre",
+      "foreignKey": ""
+    },
+    "batiment": {
+      "type": "belongsTo",
+      "model": "batiment",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

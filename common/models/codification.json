@@ -1,0 +1,33 @@
+{
+  "name": "codification",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "position": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "etudiants": {
+      "type": "hasAndBelongsToMany",
+      "model": "etudiant",
+      "foreignKey": ""
+    },
+    "chambre": {
+      "type": "hasAndBelongsToMany",
+      "model": "chambre",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

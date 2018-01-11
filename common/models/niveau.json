@@ -1,0 +1,24 @@
+{
+  "name": "niveau",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "intitule": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "etudiant": {
+      "type": "hasMany",
+      "model": "etudiant",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

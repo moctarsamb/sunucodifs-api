@@ -1,0 +1,43 @@
+{
+  "name": "batiment",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "nomBatiment": {
+      "type": "string",
+      "required": true
+    },
+    "nbEtages": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "etage": {
+      "type": "hasMany",
+      "model": "etage",
+      "foreignKey": ""
+    },
+    "chambre": {
+      "type": "hasMany",
+      "model": "chambre",
+      "foreignKey": ""
+    },
+    "couloir": {
+      "type": "hasMany",
+      "model": "couloir",
+      "foreignKey": ""
+    },
+    "departement": {
+      "type": "hasOne",
+      "model": "departement",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
