@@ -66,5 +66,21 @@
   "codification": {
     "dataSource": "mongo",
     "public": true
+  },
+  "codeVerif": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "verifcode": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "recoverPass": {
+    "dataSource": "mongo",
+    "public": false
+  },
+  "resetPass": {
+    "dataSource": "mongo",
+    "public": false
   }
 }

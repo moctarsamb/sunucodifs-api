@@ -39,12 +39,109 @@
       "model": "departement",
       "foreignKey": ""
     },
+    "codeVerif": {
+      "type": "hasOne",
+      "model": "codeVerif",
+      "foreignKey": ""
+    },
     "niveau": {
       "type": "belongsTo",
       "model": "niveau",
       "foreignKey": ""
     }
   },
-  "acls": [],
-  "methods": {}
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "recoverPassword": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "recoverPass",
+          "required": true,
+          "description": "L'adresse mail du client",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "envoye",
+          "type": "boolean",
+          "root": true,
+          "description": "Retourne vrai si lemail a ete envoye sinon faux"
+        }
+      ],
+      "description": "Envoyer un mail avec un code pour recuperer un mot de passe",
+      "http": [
+        {
+          "path": "/recoverPassword",
+          "verb": "post"
+        }
+      ]
+    },
+    "verifierCode": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "verifcode",
+          "required": true,
+          "description": "Le code et le mail",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "verified",
+          "type": "boolean",
+          "root": true,
+          "description": "Indique si le compte est verifie"
+        }
+      ],
+      "description": "Verifies le code envoyé via mail",
+      "http": [
+        {
+          "path": "/verifierCode",
+          "verb": "post"
+        }
+      ]
+    },
+    "resetPassword": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "resetPass",
+          "required": true,
+          "description": "Le code le mail et le nouveau mot de passe",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "reset",
+          "type": "boolean",
+          "root": true,
+          "description": "Indique si le mdp est reinitialise"
+        }
+      ],
+      "description": "Reinitialise le mot de passe",
+      "http": [
+        {
+          "path": "/resetPassword",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }
