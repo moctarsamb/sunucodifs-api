@@ -4,8 +4,8 @@ const Promise = require("bluebird");
 const NodeMailer = require("nodemailer");
 const transporter = NodeMailer.createTransport({
   service: "gmail",
-  secure: false,
-  port: 25,
+  secure: true,
+  port: 465,
   auth: {
     user: "joloftrtest@gmail.com",
     pass: "passeras"
