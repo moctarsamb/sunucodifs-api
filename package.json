@@ -11,6 +11,7 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.2.0",
     "chance": "^1.0.13",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
@@ -20,6 +21,7 @@
     "loopback-component-explorer": "^4.0.0",
     "loopback-connector-mongodb": "^3.3.1",
     "loopback-connector-mysql": "^5.2.0",
+    "nodemailer-sendgrid-transport": "^0.2.0",
     "qrcode": "^1.2.0",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^2.0.0"

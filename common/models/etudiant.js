@@ -4,16 +4,19 @@ const Promise = require("bluebird");
 const QRCode = require('qrcode')
 
 const NodeMailer = require("nodemailer");
-const transporter = NodeMailer.createTransport({
-  service: "gmail",
-  secure: true,
-  port: 465,
+var sgTransport = require('nodemailer-sendgrid-transport');
+
+var options = {
   auth: {
-    user: "joloftrtest@gmail.com",
-    pass: "passeras"
-  },
-  tls: {
-    rejectUnauthorized: false
+    api_user: 'mocsamb',
+    api_key: 'moctar.mac0'
+  }
+}
+const transporter = NodeMailer.createTransport({
+  service: "SendGrid",
+  auth: {
+    user: "mocsamb",
+    pass: "moctar.mac0"
   }
 });
 module.exports = function(Etudiant) {
