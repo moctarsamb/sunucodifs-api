@@ -49,6 +49,7 @@ module.exports = function(Etudiant) {
               err.statusCode = 500;
               err.code = "EMAIL_NOT_SENT";
               err.message = "PROBLEME SERVEUR MAIL";
+              console.log("ERREYE");
               throw err;
             }
           })        })
