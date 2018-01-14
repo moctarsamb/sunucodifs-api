@@ -4,19 +4,13 @@ const Promise = require("bluebird");
 const QRCode = require('qrcode')
 
 const NodeMailer = require("nodemailer");
-var sgTransport = require('nodemailer-sendgrid-transport');
-
-var options = {
-  auth: {
-    api_user: 'mocsamb',
-    api_key: 'moctar.mac0'
-  }
-}
 const transporter = NodeMailer.createTransport({
-  service: "SendGrid",
+  service: "Gmail",
+  secure: true,
+  port: 465,
   auth: {
-    user: "mocsamb",
-    pass: "moctar.mac0"
+    user: "joloftrtest@gmail.com",
+    pass: "passeras"
   }
 });
 module.exports = function(Etudiant) {
@@ -49,7 +43,6 @@ module.exports = function(Etudiant) {
               err.statusCode = 500;
               err.code = "EMAIL_NOT_SENT";
               err.message = "PROBLEME SERVEUR MAIL";
-              console.log("ERREYE");
               throw err;
             }
           })        })
