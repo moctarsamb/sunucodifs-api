@@ -1,6 +1,8 @@
 'use strict';
 const Chance = require("chance");
 const Promise = require("bluebird");
+const QRCode = require('qrcode')
+
 const NodeMailer = require("nodemailer");
 const transporter = NodeMailer.createTransport({
   service: "gmail",
@@ -23,23 +25,31 @@ module.exports = function(Etudiant) {
     .create({ code: verifCode, date: new Date() })
     .then(() => {
     //f6bd0a
-    const mailOptions = {
-      from: "SunuCodifs <contact@sunucodifs.com>",
-      to: user.email,
-      subject: "Verification Compte",
-      text: `Votre Code de verification est ${verifCode}`
-    };
-  transporter
-    .sendMail(mailOptions)
-    .then(info => {
-    if (!info) {
-    const err = new Error();
-    err.statusCode = 500;
-    err.code = "EMAIL_NOT_SENT";
-    err.message = "PROBLEME SERVEUR MAIL";
-    throw err;
-  }
-})
+      QRCode.toDataURL(verifCode, function (err, url) {
+        const mailOptions = {
+          from: "SunuCodifs <contact@sunucodifs.com>",
+          to: user.email,
+          subject: "Verification Compte",
+          text: `Votre Code de verification est ${verifCode}`,
+          attachments : [
+            {   // utf-8 string as an attachment
+              filename: 'qrcode.png',
+              href : url
+            }
+          ]
+        };
+        transporter
+          .sendMail(mailOptions)
+          .then(info => {
+            if (!info) {
+              const err = new Error();
+              err.statusCode = 500;
+              err.code = "EMAIL_NOT_SENT";
+              err.message = "PROBLEME SERVEUR MAIL";
+              throw err;
+            }
+          })        })
+
 }
 );
   return Promise.resolve();
