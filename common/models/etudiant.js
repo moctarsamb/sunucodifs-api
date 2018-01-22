@@ -164,5 +164,51 @@ module.exports = function(Etudiant) {
     }
   });
   };
+  /**
+   * Chambres recommandées
+   * @param {null} request Requete
+   * @param {string} batiment Batiment
+   * @param {Function(Error, array)} callback
+   */
+
+  Etudiant.recommended = function(id, batiment) {
+    let allRec = Etudiant.app.models.Chambre.find({where : { reserve : false, batimentId : batiment }});
+    return Etudiant.findOne({where : {id : id} }).then(etudiant => {
+          if(!etudiant){
+            const err = new Error();
+            err.statusCode = 404;
+            err.code = "USER_NOT_FOUND";
+            err.message = "COMPTE INTROUVABLE";
+            throw err;
+          }
+          return Etudiant.find({ where : {departementId : etudiant.departementId, niveauId : etudiant.niveauId} }).then(etudts => {
+            if(!etudts){
+              return allRec ;
+            }
+           return Promise.map(etudts,etudt => {
+             return Etudiant.app.models.Codification.findOne({where:{etudiantId : etudt.id }}).then(codif => {
+               if(!codif){
+                 return
+               }
+               return codif;
+             })
+           }).then(codifs=>{
+             // const next = Promise.promisify(codifs.filter(codif => codif));
+             //  return next.then(codifs=> {
+               if(!codifs) return allRec;
+               return Promise.map(codifs,codif=> {
+                 if(!codif){
+                   return
+                 }
+                 return Etudiant.app.models.Chambre.findOne({where : {id : codif.chambreId, reserve: false} })
+                 //   })
+             }).then(chambres=>{
+                 return chambres.filter(chambre => chambre);
+               })
+           })
+            }
+          )
+      } )
+  };
 
 };

@@ -142,6 +142,43 @@
           "verb": "post"
         }
       ]
+    },
+    "recommended": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "string",
+          "required": true,
+          "description": "Requete",
+          "http": {
+            "source": "query"
+          }
+        },
+        {
+          "arg": "batiment",
+          "type": "string",
+          "required": true,
+          "description": "Batiment",
+          "http": {
+            "source": "query"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "chambres",
+          "type": "any",
+          "root": true,
+          "description": "Chambre recommandéess"
+        }
+      ],
+      "description": "Chambres recommandées",
+      "http": [
+        {
+          "path": "/recommended",
+          "verb": "get"
+        }
+      ]
     }
   }
 }
