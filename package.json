@@ -21,6 +21,7 @@
     "loopback-component-explorer": "^4.0.0",
     "loopback-connector-mongodb": "^3.3.1",
     "loopback-connector-mysql": "^5.2.0",
+    "nodemailer": "^4.4.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "qrcode": "^1.2.0",
     "serve-favicon": "^2.0.1",
