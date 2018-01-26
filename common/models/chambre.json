@@ -20,6 +20,10 @@
     "reserve": {
       "type": "boolean",
       "required": true
+    },
+    "nbposres" : {
+      "type": "number",
+      "required" : true
     }
   },
   "validations": [],

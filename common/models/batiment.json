@@ -13,6 +13,10 @@
     "nbEtages": {
       "type": "number",
       "required": true
+    },
+    "code": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],
