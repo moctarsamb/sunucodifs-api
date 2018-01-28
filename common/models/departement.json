@@ -21,6 +21,11 @@
       "type": "hasMany",
       "model": "etudiant",
       "foreignKey": ""
+    },
+    "niveaus": {
+      "type": "hasMany",
+      "model": "niveau",
+      "foreignKey": ""
     }
   },
   "acls": [],

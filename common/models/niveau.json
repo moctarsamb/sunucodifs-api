@@ -17,6 +17,11 @@
       "type": "hasMany",
       "model": "etudiant",
       "foreignKey": ""
+    },
+    "departement": {
+      "type": "belongsTo",
+      "model": "departement",
+      "foreignKey": ""
     }
   },
   "acls": [],
