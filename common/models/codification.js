@@ -107,8 +107,41 @@ module.exports = function(Codification) {
         const receive = echangeParams.idRecEch ;
         return ech.remove().then(()=> {
           return Codification.app.models.Etudiant.findOne({where: {id: emit}}).then((emitteur)=>{
+            const emitted = emitteur;
+            const mailOptions = {
+              from: "SunuCodifs <contact@sunucodifs.com>",
+              to: emitteur.email,
+              subject: "Echange Codification Validé ",
+              text: `Votre demande d'echange a été confirmée`
+            };
+            transporter.sendMail(mailOptions)
+              .then(info => {
+                if (!info) {
+                  const err = new Error();
+                  err.statusCode = 500;
+                  err.code = "EMAIL_NOT_SENT";
+                  err.message = "PROBLEME SERVEUR MAIL";
+                  throw err;
+                }
+              })
             return emitteur.updateAttribute("hasEchReq",false).then(()=>{
               return Codification.app.models.Etudiant.findOne({where: {id: receive}}).then((recelleur)=> {
+                const mailOptions = {
+                  from: "SunuCodifs <contact@sunucodifs.com>",
+                  to: recelleur.email,
+                  subject: "Echange Codification Confirmée ",
+                  text: `La demande d'echange de L'etudiant ${emitted.prenom} ${emitted.nom} vient d'etre confirmée`
+                };
+                transporter.sendMail(mailOptions)
+                  .then(info => {
+                    if (!info) {
+                      const err = new Error();
+                      err.statusCode = 500;
+                      err.code = "EMAIL_NOT_SENT";
+                      err.message = "PROBLEME SERVEUR MAIL";
+                      throw err;
+                    }
+                  })
                 return recelleur.updateAttribute("hasEchRec",false).then(()=>{
                   return Codification.findOne({where : {id: echangeParams.idChaUserEch}}).then(codif1 => {
                     return codif1.updateAttribute("etudiantId", echangeParams.idRecEch).then(()=> {

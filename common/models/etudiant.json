@@ -28,18 +28,18 @@
     },
     "hasCodified": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "required": true,
+      "default": false
     },
     "hasEchReq": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "required": true,
+      "default": false
     },
     "hasEchRec": {
       "type": "boolean",
-      "default": false,
-      "required": true
+      "required": true,
+      "default": false
     }
   },
   "validations": [],

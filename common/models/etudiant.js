@@ -205,7 +205,7 @@ module.exports = function(Etudiant) {
                  if(!codif){
                    return
                  }
-                 return Etudiant.app.models.Chambre.findOne({where : {id : codif.chambreId, reserve: false} })
+                 return Etudiant.app.models.Chambre.findOne({where : {id : codif.chambreId, reserve: false, batimentId: batiment} })
                  //   })
              }).then(chambres=>{
                  return chambres.filter(chambre => chambre);

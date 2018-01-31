@@ -28,5 +28,34 @@
   "validations": [],
   "relations": {},
   "acls": [],
-  "methods": {}
+  "methods": {
+    "supprimer": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "any",
+          "required": true,
+          "description": "",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "deleted",
+          "type": "boolean",
+          "root": false,
+          "description": "oui ou non"
+        }
+      ],
+      "description": "Supprimer",
+      "http": [
+        {
+          "path": "/suppr",
+          "verb": "delete"
+        }
+      ]
+    }
+  }
 }
