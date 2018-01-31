@@ -29,5 +29,34 @@
     }
   },
   "acls": [],
-  "methods": {}
+  "methods": {
+    "echanger": {
+      "accepts": [
+        {
+          "arg": "request",
+          "type": "verifEch",
+          "required": true,
+          "description": "L'id de codif du demandeur et l'id de codif de l'echangé",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "sent",
+          "type": "boolean",
+          "root": false,
+          "description": "Indique si l'echange a été envoyé"
+        }
+      ],
+      "description": "",
+      "http": [
+        {
+          "path": "/echange",
+          "verb": "post"
+        }
+      ]
+    }
+  }
 }

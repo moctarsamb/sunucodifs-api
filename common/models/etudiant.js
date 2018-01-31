@@ -21,8 +21,11 @@ module.exports = function(Etudiant) {
   return user.codeVerif
     .create({ code: verifCode, date: new Date() })
     .then(() => {
-    //f6bd0a
-      QRCode.toDataURL(verifCode, function (err, url) {
+      const qrData = {
+        email: user.email,
+        code: verifCode
+      };
+      QRCode.toDataURL(JSON.stringify(qrData), function (err, url) {
         const mailOptions = {
           from: "SunuCodifs <contact@sunucodifs.com>",
           to: user.email,
@@ -45,7 +48,8 @@ module.exports = function(Etudiant) {
               err.message = "PROBLEME SERVEUR MAIL";
               throw err;
             }
-          })        })
+          })
+      })
 
 }
 );
@@ -172,7 +176,7 @@ module.exports = function(Etudiant) {
    */
 
   Etudiant.recommended = function(id, batiment) {
-    let allRec = Etudiant.app.models.Chambre.find({where : { reserve : false, batimentId : batiment }});
+    const allRec = Etudiant.app.models.Chambre.find({where : { reserve : false, batimentId : batiment }});
     return Etudiant.findOne({where : {id : id} }).then(etudiant => {
           if(!etudiant){
             const err = new Error();
@@ -182,7 +186,8 @@ module.exports = function(Etudiant) {
             throw err;
           }
           return Etudiant.find({ where : {departementId : etudiant.departementId, niveauId : etudiant.niveauId} }).then(etudts => {
-            if(!etudts){
+            console.log(etudts);
+            if(etudts.length < 2){
               return allRec ;
             }
            return Promise.map(etudts,etudt => {

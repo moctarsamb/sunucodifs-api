@@ -25,6 +25,21 @@
     "numCE": {
       "type": "string",
       "required": true
+    },
+    "hasCodified": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "hasEchReq": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "hasEchRec": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   },
   "validations": [],

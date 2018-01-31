@@ -1,0 +1,32 @@
+{
+  "name": "echangeCode",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "code": {
+      "type": "string",
+      "required": true
+    },
+    "idUserEch": {
+      "type": "string",
+      "required": true
+    },
+    "idChaUserEch": {
+      "type": "string",
+      "required": true
+    },
+    "idRecEch": {
+      "type": "string"
+    },
+    "idChaRecEch": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

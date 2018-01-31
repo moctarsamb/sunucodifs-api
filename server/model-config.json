@@ -82,5 +82,13 @@
   "resetPass": {
     "dataSource": "mongo",
     "public": false
+  },
+  "echangeCode": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "verifEch": {
+    "dataSource": "mongo",
+    "public": false
   }
 }
